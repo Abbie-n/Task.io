@@ -12,6 +12,7 @@ class InputField extends StatelessWidget {
   final TextCapitalization capitalization;
   final TextInputAction action;
   final TextInputType keyboardType;
+  final Function onChanged;
   // final Function focus;
 
   InputField({
@@ -23,6 +24,7 @@ class InputField extends StatelessWidget {
     this.capitalization,
     this.action,
     this.keyboardType,
+    this.onChanged
     // this.focus,
   });
 
@@ -48,11 +50,13 @@ class InputField extends StatelessWidget {
             color: TaskioColors.grey,
           ),
           cursorColor: TaskioColors.grey[700],
+          autofocus: false,
           obscureText: obscure,
           validator: validate,
           controller: controller,
-          onChanged: (value) => controller.text = value,
+          //onChanged: (value) => controller.text = value,
           onFieldSubmitted: (_) {
+
             FocusScope.of(context).nextFocus();
           },
           textCapitalization: capitalization,

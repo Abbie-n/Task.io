@@ -52,6 +52,9 @@ class SignupView extends StatelessWidget {
                       if (value.isEmpty) return 'Field cannot be empty';
                       return null;
                     },
+                    onChanged: (value) {
+                      model.fullname.text = value;
+                    },
                     capitalization: TextCapitalization.sentences,
                     action: TextInputAction.next,
                     keyboardType: TextInputType.name,
@@ -73,6 +76,9 @@ class SignupView extends StatelessWidget {
                         return 'Please provide a valid email address';
 
                       return null;
+                    },
+                    onChanged: (value) {
+                      model.email.text = value;
                     },
                     capitalization: TextCapitalization.none,
                     action: TextInputAction.next,
@@ -116,6 +122,9 @@ class SignupView extends StatelessWidget {
                             return 'Password should be up to 7 characters';
 
                           return null;
+                        },
+                        onChanged: (value) {
+                          model.password.text = value;
                         },
                         // visibility: Padding(
                         //   padding: EdgeInsets.symmetric(horizontal: 2.width),
@@ -207,7 +216,10 @@ class SignupView extends StatelessWidget {
                       margin: EdgeInsets.only(bottom: 1.5.height),
                       child: CustomButton(
                         text: 'Register',
-                        function: model.formValidation,
+                        function: () {
+                          model.formValidation(context);
+                        },
+
                         // () {
                         //   if (_signup.currentState.validate())
                         //     model.navigateToVerificationView();
@@ -229,7 +241,8 @@ class SignupView extends StatelessWidget {
                       Text(
                         'Already have an account?',
                         style: TextStyle(
-                            color: TaskioColors.grey[700].withOpacity(0.4), fontSize: 4.text),
+                            color: TaskioColors.grey[700].withOpacity(0.4),
+                            fontSize: 4.text),
                       ),
                       SizedBox(
                         width: 2.5.width,

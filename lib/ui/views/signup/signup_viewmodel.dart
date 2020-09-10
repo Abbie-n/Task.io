@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:taskio/app/locator.dart';
 import 'package:taskio/app/router/routes.gr.dart';
+import 'package:taskio/core/models/user.dart';
+import 'package:taskio/core/services/auth.dart';
 
 class SignupViewModel extends ChangeNotifier {
   TextEditingController fullname = TextEditingController();
@@ -11,10 +14,12 @@ class SignupViewModel extends ChangeNotifier {
 
   final _signup = GlobalKey<FormState>();
 
+  final _auth = locator<AuthService>();
+
   get signup => _signup;
 
-  bool _visible = false;
-  bool _secondVisible = false;
+  bool _visible = true;
+  bool _secondVisible = true;
 
   bool get visible => _visible;
   bool get secondVisible => _secondVisible;
@@ -36,20 +41,31 @@ class SignupViewModel extends ChangeNotifier {
     return (!regex.hasMatch(value)) ? false : true;
   }
 
-  void formValidation() {
+  void formValidation(BuildContext context) async {
     if (_signup.currentState.validate()) {
+      await _auth.registerWithEmailAndPassword(
+        context,
+        User(
+          fullName: fullname.text.trim(),
+          email: email.text.trim(),
+          password: password.text,
+          role: _selected,
+        ),
+      );
+      print(fullname.text);
+      //await Navigator.pushReplacementNamed(context, Routes.homeView);
       print('Verified');
     }
   }
 
   void navigateToLoginView(BuildContext context) {
-    Navigator.pushNamed(context, Routes.loginView);
     fullname.clear();
     email.clear();
     password.clear();
     confirmPassword.clear();
     _selected = userLevels[4];
     notifyListeners();
+    Navigator.pushNamed(context, Routes.loginView);
   }
 
   List<String> userLevels = [
