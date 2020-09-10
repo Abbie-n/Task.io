@@ -12,18 +12,21 @@ import 'package:flutter/material.dart';
 import '../../ui/views/home/home_view.dart';
 import '../../ui/views/login/login_view.dart';
 import '../../ui/views/signup/signup_view.dart';
-import '../../ui/views/tasks/create_task.dart';
+import '../../ui/views/splash_screen/splashScreen_view.dart';
+import '../../ui/views/tasks/create_task_view.dart';
 
 class Routes {
   static const String loginView = '/login-view';
   static const String signupView = '/signup-view';
   static const String homeView = '/home-view';
   static const String createTaskView = '/create-task-view';
+  static const String splashScreenView = '/splash-screen-view';
   static const all = <String>{
     loginView,
     signupView,
     homeView,
     createTaskView,
+    splashScreenView,
   };
 }
 
@@ -35,6 +38,7 @@ class Router extends RouterBase {
     RouteDef(Routes.signupView, page: SignupView),
     RouteDef(Routes.homeView, page: HomeView),
     RouteDef(Routes.createTaskView, page: CreateTaskView),
+    RouteDef(Routes.splashScreenView, page: SplashScreenView),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -63,6 +67,12 @@ class Router extends RouterBase {
     CreateTaskView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => CreateTaskView(),
+        settings: data,
+      );
+    },
+    SplashScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => SplashScreenView(),
         settings: data,
       );
     },

@@ -5,7 +5,7 @@ import 'package:taskio/core/models/user.dart';
 import 'package:taskio/core/services/auth.dart';
 
 class LoginViewModel extends ChangeNotifier {
-  final _auth = locator<AuthService>();
+  final _auth = locator<AuthServiceImpl>();
 
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();

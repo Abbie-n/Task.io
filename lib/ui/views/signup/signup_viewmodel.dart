@@ -14,7 +14,7 @@ class SignupViewModel extends ChangeNotifier {
 
   final _signup = GlobalKey<FormState>();
 
-  final _auth = locator<AuthService>();
+  final _auth = locator<AuthServiceImpl>();
 
   get signup => _signup;
 

@@ -12,5 +12,5 @@ Future<void> setupLocator() {
 
   locator.registerLazySingleton(() => Firestore.instance);
 
-  locator.registerLazySingleton<AuthService>(() => AuthServiceImpl());
+  locator.registerLazySingleton<AuthServiceImpl>(() => AuthServiceImpl());
 }

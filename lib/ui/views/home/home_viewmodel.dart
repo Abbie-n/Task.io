@@ -7,6 +7,7 @@ import 'package:taskio/app/router/routes.gr.dart';
 // import 'package:taskio/core/services/auth.dart';
 
 class HomeViewModel extends ChangeNotifier {
+  bool complete = false;
   final fireStore = locator<Firestore>();
   getDate() {
     DateTime date = DateTime.now();
