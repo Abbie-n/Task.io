@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "369039883640",
+    "firebase_url": "https://taskio-cca9f.firebaseio.com",
+    "project_id": "taskio-cca9f",
+    "storage_bucket": "taskio-cca9f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369039883640:android:2dff248edc2b87949f9c8d",
+        "android_client_info": {
+          "package_name": "com.abbie.taskio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "369039883640-rshq9rbi161omljcplefg7is5iv4u509.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZdij0PMQ5FpkVAWmcUH2N6_2DodkTyGA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "369039883640-rshq9rbi161omljcplefg7is5iv4u509.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
