@@ -44,11 +44,9 @@ class AuthServiceImpl implements AuthService {
         'Full Name': user.fullName,
         'Role': user.role,
       });
-      Navigator.pushReplacementNamed(
-        context,
-        Routes.homeView,
-        arguments: HomeViewArguments(userId: result.user.uid),
-      );
+      result.user.sendEmailVerification();
+
+      Navigator.pushReplacementNamed(context, Routes.loginView);
       print(result);
       print(user.uid);
     } catch (e) {
@@ -74,11 +72,15 @@ class AuthServiceImpl implements AuthService {
         email: user.email,
         password: user.password,
       );
-      Navigator.pushReplacementNamed(
-        context,
-        Routes.homeView,
-        arguments: HomeViewArguments(userId: result.user.uid),
-      );
+      if (result.user.isEmailVerified) {
+        Navigator.pushReplacementNamed(
+          context,
+          Routes.homeView,
+          arguments: HomeViewArguments(userId: result.user.uid),
+        );
+      } else {
+        print('Not verified my Nigga!');
+      }
       print(result);
     } catch (e) {
       switch (e.code) {

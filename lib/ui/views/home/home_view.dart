@@ -78,13 +78,14 @@ class HomeView extends StatelessWidget {
                                     child: ListView(
                                       children: snapshot.data.documents.map(
                                         (DocumentSnapshot document) {
-                                          String startDate =
+                                          String deadlineDate =
                                               DateFormat('MMM d').format(
-                                            document['Start date'].toDate(),
+                                            document['Deadline Date'].toDate(),
                                           );
-                                          String endDate = DateFormat('MMM d')
-                                              .format(document['End date']
-                                                  .toDate());
+                                          String deadlineTime =
+                                              DateFormat('MMM d').format(
+                                                  document['Deadline Time']
+                                                      .toDate());
                                           return document['Heading'] == ''
                                               ? Container(
                                                   margin: EdgeInsets.only(
@@ -103,10 +104,13 @@ class HomeView extends StatelessWidget {
                                                 )
                                               : TaskContainer(
                                                   complete: model.complete,
-                                                  // heading: ,
-                                                  // description: ,
-                                                  startDate: startDate ?? '',
-                                                  endDate: endDate ?? '',
+                                                  heading: document['Heading'],
+                                                  description:
+                                                      document['Description'],
+                                                  deadlineDate:
+                                                      deadlineDate ?? '',
+                                                  deadlineTime:
+                                                      deadlineTime ?? '',
                                                 );
                                         },
                                       ).toList(),

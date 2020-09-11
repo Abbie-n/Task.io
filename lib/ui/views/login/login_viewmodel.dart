@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:taskio/app/locator.dart';
+import 'package:taskio/app/router/routes.gr.dart';
 // import 'package:taskio/app/router/routes.gr.dart';
 import 'package:taskio/core/models/user.dart';
 import 'package:taskio/core/services/auth.dart';
@@ -32,6 +33,8 @@ class LoginViewModel extends ChangeNotifier {
           password: password.text,
         ),
       );
+      email.clear();
+      password.clear();
       //await Navigator.pushReplacementNamed(context, Routes.homeView);
     }
   }
@@ -40,6 +43,6 @@ class LoginViewModel extends ChangeNotifier {
     email.clear();
     password.clear();
     notifyListeners();
-    Navigator.pop(context);
+    Navigator.pushNamed(context, Routes.signupView);
   }
 }
